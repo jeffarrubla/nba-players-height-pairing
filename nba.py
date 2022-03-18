@@ -43,13 +43,12 @@ if __name__ == "__main__":
 	response = requests.get("https://mach-eight.uc.r.appspot.com/")
 
 	if response.status_code == 200:
-		json = response.json()['values']
 		while heigh_sum == '':
 			try:
 				heigh_sum = int(input('Type the input height in inches: '))
 			except:
 				print('Not an integer typed, try again')
 
-		pair_nba_players(json, heigh_sum)
+		pair_nba_players(response.json()['values'], heigh_sum)
 	else:
 		print('Error getting the json from source')
